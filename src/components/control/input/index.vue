@@ -1,9 +1,13 @@
 <template>
   <div class="inp">
-    <el-input v-model="val" @input="handleChangeEvent"></el-input>
+    <el-input
+      v-model="val"
+      @input="handleChangeEvent"
+      :type="config.isType"
+    ></el-input>
     <el-button
       :loading="loading"
-      v-if="config.sendcode"
+      v-if="config.sendCode"
       round
       type="primary"
       size="mini"

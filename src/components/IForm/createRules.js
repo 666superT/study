@@ -19,7 +19,7 @@ function createRules(data) {
     if (item.valueType === 'phone') {
       const rules = {
         validator: validatePhone,
-        trigger: 'blur'
+        trigger: item.trigger || 'blur'
       }
       ruleArr.push(rules)
     }
@@ -35,6 +35,9 @@ function createMessage(item) {
   switch (item.type) {
     case 'input':
       msg = '请输入'
+      break
+    case 'select':
+      msg = '请选择'
       break
   }
   return msg + item.label

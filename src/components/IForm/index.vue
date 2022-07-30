@@ -11,7 +11,14 @@
         </el-form-item>
       </template>
       <el-form-item>
-        <el-button>按钮</el-button>
+        <el-button
+          v-for="item in button"
+          @click="handleButtonEven(item)"
+          :key="item.method"
+          v-bind="item"
+        >
+          {{ item.text }}
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -33,10 +40,15 @@ export default {
       type: Array,
       default: () => []
     },
+    button: {
+      type: Array,
+      default: () => []
+    },
     field: {
       type: Object,
       default: () => ({})
-    }
+    },
+    beforeSubmit: Function
   },
   components: {
     ...modules
@@ -44,6 +56,46 @@ export default {
   data() {
     return {
       formItem: ''
+    }
+  },
+  methods: {
+    // 表单按钮事件
+    handleButtonEven(item) {
+      switch (item.method) {
+        case 'submit':
+          this.handleSubmit(item)
+          break
+        case 'reset':
+          this.handleReset(item)
+          break
+      }
+    },
+    // 提交
+    handleSubmit(item) {
+      this.$refs.form.validate((valid) => {
+        // console.log(valid)
+        if (valid) {
+          item.loading = true
+          if (typeof this.beforeSubmit === 'function') {
+            this.beforeSubmit()
+              .then(() => {
+                this.$message.success('提交成功')
+                item.loading = false
+              })
+              .catch(() => {
+                this.$message.error('提交失败')
+                item.loading = false
+              })
+          }
+        } else {
+          this.$message.error('输入内容不完整')
+        }
+      })
+    },
+    // 重置
+    handleReset(item) {
+      this.$refs.form.resetFields()
+      item.callback && item.callback()
     }
   },
   beforeMount() {

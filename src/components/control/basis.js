@@ -4,7 +4,7 @@ const props = {
     default: () => ({})
   },
   value: {
-    type: String,
+    type: [String, Array, Number, Boolean],
     default: ''
   }
 }
