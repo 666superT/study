@@ -39,6 +39,9 @@ function createMessage(item) {
     case 'select':
       msg = '请选择'
       break
+    case 'date':
+      msg = '请选择'
+      break
   }
   return msg + item.label
 }

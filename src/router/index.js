@@ -8,6 +8,11 @@ const routes = [
     path: '/',
     name: 'formView',
     component: () => import('../views/formView.vue')
+  },
+  {
+    path: '/tableView',
+    name: 'tableView',
+    component: () => import('../views/tableView.vue')
   }
 ]
 

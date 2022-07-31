@@ -113,15 +113,22 @@ export default {
           ]
         },
         {
+          label: '日期',
+          prop: 'date',
+          type: 'date',
+          format: 'yyyy-MM-dd',
+          valueFormat: 'yyyy-MM-dd',
+          required: true,
+          startPlaceholder: '开工时间',
+          endPlaceholder: '结束时间',
+          rangeSeparator: '至',
+          model: 'daterange'
+        },
+        {
           label: '描述',
           prop: 'describe',
           type: 'input',
           isType: 'textarea'
-        },
-        {
-          label: '日期',
-          prop: 'date',
-          type: 'date'
         }
       ],
       formField: {
@@ -133,7 +140,7 @@ export default {
         car: [],
         sex: 1,
         describe: '',
-        date: []
+        date: ''
       },
       formButton: [
         {

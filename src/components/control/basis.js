@@ -6,6 +6,17 @@ const props = {
   value: {
     type: [String, Array, Number, Boolean],
     default: ''
+  },
+  // column每一项配置
+  // 该列字段
+  prop: {
+    type: String,
+    default: ''
+  },
+  // 请求来的渲染数据
+  data: {
+    type: Object,
+    default: () => ({})
   }
 }
 

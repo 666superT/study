@@ -1,25 +1,27 @@
 <template>
-  <div class="inp">
+  <div class='inp'>
     <el-input
-      v-model="val"
-      @input="handleChangeEvent"
-      :type="config.isType"
+      v-model='val'
+      :type='config.isType'
+      @input='handleChangeEvent'
     ></el-input>
     <el-button
-      :loading="loading"
-      v-if="config.sendCode"
+      v-if='config.sendCode'
+      :disabled='disabled'
+      :loading='loading'
       round
-      type="primary"
-      size="mini"
-      :disabled="disabled"
-      @click.stop="handleSendCode"
-      >{{ text }}</el-button
+      size='mini'
+      type='primary'
+      @click.stop='handleSendCode'
+    >{{ text }}
+    </el-button
     >
   </div>
 </template>
 
 <script>
-import { props, mixin } from '../basis'
+import { mixin, props } from '../basis'
+
 export default {
   name: 'InputComponent',
   props: {
@@ -83,9 +85,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .inp {
   position: relative;
+
   .el-button {
     position: absolute;
     right: 25px;

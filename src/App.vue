@@ -1,14 +1,15 @@
 <template>
-  <div id="app">
+  <div id='app'>
     <nav>
-      <router-link to="/">form</router-link> |
-      <!-- <router-link to="/about">About</router-link> -->
+      <router-link to='/'>formView</router-link>
+      |
+      <router-link to='/tableView'>tableView</router-link>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style lang="scss">
+<style lang='scss'>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
